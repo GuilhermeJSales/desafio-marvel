@@ -1,3 +1,10 @@
+import { Container } from '../../components/container'
+import { HomeHeader } from './header'
+
 export default function Home() {
-  return <h1>Home Page</h1>
+  return (
+    <Container>
+      <HomeHeader />
+    </Container>
+  )
 }
