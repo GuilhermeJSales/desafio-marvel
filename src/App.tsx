@@ -1,7 +1,22 @@
-import './App.css'
+import { createBrowserRouter } from 'react-router'
+import Home from './pages/home'
+import { Layout } from './layout'
+import { Hero } from './pages/hero'
 
-function App() {
-  return <></>
-}
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/hero/:id',
+        element: <Hero />,
+      },
+    ],
+  },
+])
 
-export default App
+export { router }
