@@ -3,6 +3,7 @@ import styles from './heros.module.css'
 import { Link } from 'react-router'
 import { api } from '../../../services/api'
 import { Loader } from '../../../components/loader'
+import { Heart } from '../../../components/heart'
 
 export interface HeroProps {
   id: number
@@ -63,6 +64,7 @@ export function HomeHeros() {
 
             <div className={styles.heroInfo}>
               <h3>{hero.name}</h3>
+              <Heart hero={hero} />
             </div>
           </div>
         ))}
