@@ -1,0 +1,38 @@
+.hero {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  gap: 2.5rem;
+  padding-top: 1.25rem;
+}
+
+.thumb {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 4px solid red;
+  margin-bottom: 1.25rem;
+}
+
+.heroInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hero h3 {
+  font-size: 1.125rem;
+}
+
+.heroNumber {
+  color: #b9b9b9;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.filtersCol {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

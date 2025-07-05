@@ -12,7 +12,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body,
+span {
   font-family: 'Work Sans', sans-serif;
   font-optical-sizing: auto;
 }
@@ -25,4 +26,10 @@ h3 {
 
 p {
   color: #8c8c8c;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
 }
