@@ -31,3 +31,9 @@
   opacity: 0.5;
   font-weight: 600;
 }
+
+@media only screen and (max-width: 640px) {
+  .containerSearch {
+    max-width: 100%;
+  }
+}

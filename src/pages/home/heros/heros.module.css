@@ -43,6 +43,12 @@
   gap: 1.25rem;
 }
 
+.buttonSortContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .buttonSort {
   display: flex;
   gap: 0.875rem;
@@ -50,7 +56,7 @@
   cursor: pointer;
 }
 
-.buttonSort span {
+.buttonSortText {
   color: #ff1510;
   font-size: 1.125rem;
   font-weight: 500;
@@ -62,4 +68,36 @@
 
 .buttonSort img {
   max-width: 1.125rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .hero {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filtersCol,
+  .filtersContainer {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .filtersCol,
+  .filtersContainer {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: start;
+  }
 }

@@ -83,15 +83,18 @@ export function HomeHeros() {
 
         <div className={styles.filtersContainer}>
           <div className={styles.buttonSort}>
-            <img
-              src={heroi}
-              srcSet={`${heroi1} 1.5x, ${heroi2} 2x, ${heroi3} 3x`}
-              alt="Imagem - Favoritos"
-            />
-            <span>{sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}</span>
+            <div className={styles.buttonSortContainer}>
+              <img
+                src={heroi}
+                srcSet={`${heroi1} 1.5x, ${heroi2} 2x, ${heroi3} 3x`}
+                alt="Imagem - Favoritos"
+              />
+              <span className={styles.buttonSortText}>
+                {sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}
+              </span>
+            </div>
+            <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
           </div>
-
-          <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
 
           <FilterFavorites
             showOnlyFavorites={showOnlyFavorites}
