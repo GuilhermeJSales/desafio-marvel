@@ -13,7 +13,8 @@ html {
 }
 
 body,
-span {
+span,
+input {
   font-family: 'Work Sans', sans-serif;
   font-optical-sizing: auto;
 }

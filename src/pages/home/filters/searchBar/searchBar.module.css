@@ -1,0 +1,33 @@
+.containerSearch {
+  position: relative;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto 3.125rem;
+}
+
+.containerSearch img {
+  position: absolute;
+  left: 1.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.containerSearch input {
+  width: 100%;
+  padding: 1.25rem 1rem 1.25rem 5rem;
+  border: none;
+  border-radius: 3.125rem;
+  background-color: #fdecec;
+  font-size: 1rem;
+  outline: none;
+  color: #ff1510;
+  font-weight: 600;
+}
+
+.containerSearch input::placeholder {
+  color: #ff1510;
+  opacity: 0.5;
+  font-weight: 600;
+}

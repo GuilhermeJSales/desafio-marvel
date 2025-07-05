@@ -11,6 +11,7 @@ import heroi1 from '../../../assets/icones/heroi/noun_Superhero_2227044@1,5x.svg
 import heroi2 from '../../../assets/icones/heroi/noun_Superhero_2227044@2x.png'
 import heroi3 from '../../../assets/icones/heroi/noun_Superhero_2227044@3x.png'
 import { ToggleSwitch } from '../filters/ToggleSwitch'
+import { SearchBar } from '../filters/searchBar'
 
 export interface HeroProps {
   id: number
@@ -28,14 +29,20 @@ export function HomeHeros() {
   const [loading, setLoading] = useState(true)
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
   const [sortAZ, setSortAZ] = useState(false)
+  const [searchHero, setSearchHero] = useState('')
 
   useEffect(() => {
-    async function getHeros(offset = 0, limit = 20) {
+    async function getHeros() {
       try {
         setLoading(true)
+
         const response = await api.get('characters', {
-          params: { offset, limit },
+          params: {
+            nameStartsWith: searchHero || undefined,
+            limit: 20,
+          },
         })
+
         const {
           data: { results },
         } = response.data
@@ -47,8 +54,13 @@ export function HomeHeros() {
         setLoading(false)
       }
     }
-    getHeros()
-  }, [])
+
+    const debounce = setTimeout(() => {
+      getHeros()
+    }, 500)
+
+    return () => clearTimeout(debounce)
+  }, [searchHero])
 
   const baseHeros = showOnlyFavorites ? favorites : heros
 
@@ -62,6 +74,8 @@ export function HomeHeros() {
 
   return (
     <section>
+      <SearchBar searchHero={searchHero} onSearchChange={setSearchHero} />
+
       <div className={styles.filtersCol}>
         <span className={styles.heroNumber}>
           Encontrados {filteredHeros.length} heróis
@@ -76,7 +90,9 @@ export function HomeHeros() {
             />
             <span>{sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}</span>
           </div>
+
           <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
+
           <FilterFavorites
             showOnlyFavorites={showOnlyFavorites}
             toggleShowOnlyFavorites={() =>
@@ -85,6 +101,7 @@ export function HomeHeros() {
           />
         </div>
       </div>
+
       <article className={styles.hero}>
         {filteredHeros.map((hero) => (
           <div key={hero.id}>
