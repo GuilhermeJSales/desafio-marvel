@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.button img {
+  max-width: 1.125rem;
+}
+
 .button span {
   color: #ff1510;
   font-size: 1.125rem;
