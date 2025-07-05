@@ -36,3 +36,30 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.buttonSort {
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttonSort span {
+  color: #ff1510;
+  font-size: 1.125rem;
+  font-weight: 500;
+  opacity: 0.5;
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+.buttonSort img {
+  max-width: 1.125rem;
+}

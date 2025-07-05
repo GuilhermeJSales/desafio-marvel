@@ -6,6 +6,11 @@ import { Heart } from '../../../components/heart'
 import { Loader } from '../../../components/loader'
 import { FilterFavorites } from '../filters/filterFavorites'
 import HerosContext from '../../../context/HerosContext'
+import heroi from '../../../assets/icones/heroi/noun_Superhero_2227044.png'
+import heroi1 from '../../../assets/icones/heroi/noun_Superhero_2227044@1,5x.svg'
+import heroi2 from '../../../assets/icones/heroi/noun_Superhero_2227044@2x.png'
+import heroi3 from '../../../assets/icones/heroi/noun_Superhero_2227044@3x.png'
+import { ToggleSwitch } from '../filters/ToggleSwitch'
 
 export interface HeroProps {
   id: number
@@ -22,6 +27,7 @@ export function HomeHeros() {
   const { favorites } = useContext(HerosContext)
   const [loading, setLoading] = useState(true)
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
+  const [sortAZ, setSortAZ] = useState(false)
 
   useEffect(() => {
     async function getHeros(offset = 0, limit = 20) {
@@ -44,7 +50,11 @@ export function HomeHeros() {
     getHeros()
   }, [])
 
-  const filteredHeros = showOnlyFavorites ? favorites : heros
+  const baseHeros = showOnlyFavorites ? favorites : heros
+
+  const filteredHeros = sortAZ
+    ? [...baseHeros].sort((a, b) => a.name.localeCompare(b.name))
+    : baseHeros
 
   if (loading) {
     return <Loader />
@@ -54,15 +64,26 @@ export function HomeHeros() {
     <section>
       <div className={styles.filtersCol}>
         <span className={styles.heroNumber}>
-          Encontrados {heros.length} heróis
+          Encontrados {filteredHeros.length} heróis
         </span>
 
-        <FilterFavorites
-          showOnlyFavorites={showOnlyFavorites}
-          toggleShowOnlyFavorites={() =>
-            setShowOnlyFavorites(!showOnlyFavorites)
-          }
-        />
+        <div className={styles.filtersContainer}>
+          <div className={styles.buttonSort}>
+            <img
+              src={heroi}
+              srcSet={`${heroi1} 1.5x, ${heroi2} 2x, ${heroi3} 3x`}
+              alt="Imagem - Favoritos"
+            />
+            <span>{sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}</span>
+          </div>
+          <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
+          <FilterFavorites
+            showOnlyFavorites={showOnlyFavorites}
+            toggleShowOnlyFavorites={() =>
+              setShowOnlyFavorites(!showOnlyFavorites)
+            }
+          />
+        </div>
       </div>
       <article className={styles.hero}>
         {filteredHeros.map((hero) => (
