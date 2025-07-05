@@ -68,61 +68,63 @@ export function HomeHeros() {
     ? [...baseHeros].sort((a, b) => a.name.localeCompare(b.name))
     : baseHeros
 
-  if (loading) {
-    return <Loader />
-  }
-
   return (
     <section>
       <SearchBar searchHero={searchHero} onSearchChange={setSearchHero} />
 
-      <div className={styles.filtersCol}>
-        <span className={styles.heroNumber}>
-          Encontrados {filteredHeros.length} heróis
-        </span>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={styles.filtersCol}>
+            <span className={styles.heroNumber}>
+              Encontrados {filteredHeros.length} heróis
+            </span>
 
-        <div className={styles.filtersContainer}>
-          <div className={styles.buttonSort}>
-            <div className={styles.buttonSortContainer}>
-              <img
-                src={heroi}
-                srcSet={`${heroi1} 1.5x, ${heroi2} 2x, ${heroi3} 3x`}
-                alt="Imagem - Favoritos"
+            <div className={styles.filtersContainer}>
+              <div className={styles.buttonSort}>
+                <div className={styles.buttonSortContainer}>
+                  <img
+                    src={heroi}
+                    srcSet={`${heroi1} 1.5x, ${heroi2} 2x, ${heroi3} 3x`}
+                    alt="Imagem - Favoritos"
+                  />
+                  <span className={styles.buttonSortText}>
+                    {sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}
+                  </span>
+                </div>
+                <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
+              </div>
+
+              <FilterFavorites
+                showOnlyFavorites={showOnlyFavorites}
+                toggleShowOnlyFavorites={() =>
+                  setShowOnlyFavorites(!showOnlyFavorites)
+                }
               />
-              <span className={styles.buttonSortText}>
-                {sortAZ ? 'Ordem padrão' : 'Ordenar por nome A-Z'}
-              </span>
-            </div>
-            <ToggleSwitch setSortAZ={setSortAZ} sortAZ={sortAZ} />
-          </div>
-
-          <FilterFavorites
-            showOnlyFavorites={showOnlyFavorites}
-            toggleShowOnlyFavorites={() =>
-              setShowOnlyFavorites(!showOnlyFavorites)
-            }
-          />
-        </div>
-      </div>
-
-      <article className={styles.hero}>
-        {filteredHeros.map((hero) => (
-          <div key={hero.id}>
-            <Link to={`/hero/${hero.id}`}>
-              <img
-                className={styles.thumb}
-                src={`${hero.thumbnail.path}/portrait_incredible.${hero.thumbnail.extension}`}
-                alt={`foto do ${hero.name}`}
-              />
-            </Link>
-
-            <div className={styles.heroInfo}>
-              <h3>{hero.name}</h3>
-              <Heart hero={hero} />
             </div>
           </div>
-        ))}
-      </article>
+
+          <article className={styles.hero}>
+            {filteredHeros.map((hero) => (
+              <div key={hero.id}>
+                <Link to={`/hero/${hero.id}`}>
+                  <img
+                    className={styles.thumb}
+                    src={`${hero.thumbnail.path}/portrait_incredible.${hero.thumbnail.extension}`}
+                    alt={`foto do ${hero.name}`}
+                  />
+                </Link>
+
+                <div className={styles.heroInfo}>
+                  <h3>{hero.name}</h3>
+                  <Heart hero={hero} />
+                </div>
+              </div>
+            ))}
+          </article>
+        </>
+      )}
     </section>
   )
 }
