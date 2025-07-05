@@ -1,7 +1,8 @@
-import { api } from '../../../services/api'
-import { Link } from 'react-router'
-import styles from './heros.module.css'
 import { useEffect, useState } from 'react'
+import styles from './heros.module.css'
+import { Link } from 'react-router'
+import { api } from '../../../services/api'
+import { Loader } from '../../../components/loader'
 
 export interface HeroProps {
   id: number
@@ -15,10 +16,12 @@ export interface HeroProps {
 
 export function HomeHeros() {
   const [heros, setHeros] = useState<HeroProps[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function getHeros(offset = 0, limit = 20) {
       try {
+        setLoading(true)
         const response = await api.get('characters', {
           params: { offset, limit },
         })
@@ -29,10 +32,16 @@ export function HomeHeros() {
         setHeros(results)
       } catch (err) {
         console.error('Erro ao buscar:', err)
+      } finally {
+        setLoading(false)
       }
     }
     getHeros()
   }, [])
+
+  if (loading) {
+    return <Loader />
+  }
 
   return (
     <section>
