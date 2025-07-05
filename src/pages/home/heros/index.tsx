@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
-import styles from './heros.module.css'
-import { Link } from 'react-router'
+import { useContext, useEffect, useState } from 'react'
 import { api } from '../../../services/api'
-import { Loader } from '../../../components/loader'
+import { Link } from 'react-router'
+import styles from './heros.module.css'
 import { Heart } from '../../../components/heart'
+import { Loader } from '../../../components/loader'
+import { FilterFavorites } from '../filters/filterFavorites'
+import HerosContext from '../../../context/HerosContext'
 
 export interface HeroProps {
   id: number
@@ -17,7 +19,9 @@ export interface HeroProps {
 
 export function HomeHeros() {
   const [heros, setHeros] = useState<HeroProps[]>([])
+  const { favorites } = useContext(HerosContext)
   const [loading, setLoading] = useState(true)
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
 
   useEffect(() => {
     async function getHeros(offset = 0, limit = 20) {
@@ -40,6 +44,8 @@ export function HomeHeros() {
     getHeros()
   }, [])
 
+  const filteredHeros = showOnlyFavorites ? favorites : heros
+
   if (loading) {
     return <Loader />
   }
@@ -50,9 +56,16 @@ export function HomeHeros() {
         <span className={styles.heroNumber}>
           Encontrados {heros.length} heróis
         </span>
+
+        <FilterFavorites
+          showOnlyFavorites={showOnlyFavorites}
+          toggleShowOnlyFavorites={() =>
+            setShowOnlyFavorites(!showOnlyFavorites)
+          }
+        />
       </div>
       <article className={styles.hero}>
-        {heros.map((hero) => (
+        {filteredHeros.map((hero) => (
           <div key={hero.id}>
             <Link to={`/hero/${hero.id}`}>
               <img
