@@ -12,6 +12,7 @@ import heroi2 from '../../../assets/icones/heroi/noun_Superhero_2227044@2x.png'
 import heroi3 from '../../../assets/icones/heroi/noun_Superhero_2227044@3x.png'
 import { ToggleSwitch } from '../filters/ToggleSwitch'
 import { SearchBar } from '../filters/searchBar'
+import { useLoading } from '../../../context/LoadingContext'
 
 export interface HeroProps {
   id: number
@@ -26,7 +27,7 @@ export interface HeroProps {
 export function HomeHeros() {
   const [heros, setHeros] = useState<HeroProps[]>([])
   const { favorites } = useContext(HerosContext)
-  const [loading, setLoading] = useState(true)
+  const { loading, setLoading } = useLoading()
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
   const [sortAZ, setSortAZ] = useState(false)
   const [searchHero, setSearchHero] = useState('')

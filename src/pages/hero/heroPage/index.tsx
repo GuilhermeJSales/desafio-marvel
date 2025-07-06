@@ -6,6 +6,7 @@ import styles from './heroPage.module.css'
 import { Heart } from '../../../components/heart'
 import { ComicsFilms } from './comicsFilms'
 import { OnSaleDate } from './onSaleDate'
+import { useLoading } from '../../../context/LoadingContext'
 
 interface HeroProps {
   comics: {
@@ -39,8 +40,8 @@ interface ComicProps {
 
 export function HeroPage() {
   const { id } = useParams<{ id: string }>()
-  const [loading, setLoading] = useState(false)
   const [heroInfo, setHeroInfo] = useState<HeroProps | null>(null)
+  const { loading, setLoading } = useLoading()
   const [comics, setComics] = useState<ComicProps[]>([])
 
   useEffect(() => {
