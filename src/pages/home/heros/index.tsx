@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { api } from '../../../services/api'
-import { Link } from 'react-router'
 import styles from './heros.module.css'
-import { Heart } from '../../../components/heart'
 import { Loader } from '../../../components/loader'
 import { FilterFavorites } from '../filters/filterFavorites'
 import HerosContext from '../../../context/HerosContext'
@@ -13,6 +11,7 @@ import heroi3 from '../../../assets/icones/heroi/noun_Superhero_2227044@3x.png'
 import { ToggleSwitch } from '../filters/ToggleSwitch'
 import { SearchBar } from '../filters/searchBar'
 import { useLoading } from '../../../context/LoadingContext'
+import { Presentation } from './presentation'
 
 export interface HeroProps {
   id: number
@@ -109,18 +108,7 @@ export function HomeHeros() {
           <article className={styles.hero}>
             {filteredHeros.map((hero) => (
               <div key={hero.id}>
-                <Link to={`/hero/${hero.id}`}>
-                  <img
-                    className={styles.thumb}
-                    src={`${hero.thumbnail.path}/portrait_incredible.${hero.thumbnail.extension}`}
-                    alt={`foto do ${hero.name}`}
-                  />
-                </Link>
-
-                <div className={styles.heroInfo}>
-                  <h3>{hero.name}</h3>
-                  <Heart hero={hero} />
-                </div>
+                <Presentation infos={hero} />
               </div>
             ))}
           </article>
