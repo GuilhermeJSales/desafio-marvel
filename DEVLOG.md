@@ -20,3 +20,4 @@
 • Refatoração do componente `Loader`, transformando sua lógica em um contexto global;  
 • Refatoração do componente `HomeHero`, extraindo o componente `Presentation` para melhor organização do código;  
 • Estilização responsiva da página individual dos heróis.
+• Criação do README.md com a descrição bem detalhada do projeto.
