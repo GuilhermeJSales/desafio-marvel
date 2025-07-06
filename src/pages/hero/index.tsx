@@ -1,3 +1,17 @@
+import { Container } from '../../components/container'
+import { HeroHeader } from './header'
+import { HeroPage } from './heroPage'
+import styles from './hero.module.css'
+
 export function Hero() {
-  return <h1>Hero Page</h1>
+  return (
+    <div className={styles.bg}>
+      <Container>
+        <HeroHeader />
+        <main className={styles.herosPage}>
+          <HeroPage />
+        </main>
+      </Container>
+    </div>
+  )
 }

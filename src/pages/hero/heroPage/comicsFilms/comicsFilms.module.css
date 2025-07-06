@@ -1,0 +1,23 @@
+.ComicsFilms {
+  display: flex;
+  align-items: center;
+  gap: 6.25rem;
+}
+
+.comics {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.infosTitles {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.infosText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #404040;
+}
