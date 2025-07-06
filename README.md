@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# Marvel Heroes Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação desenvolvida com React que consome a API da Marvel para exibir heróis, seus quadrinhos e séries. Os usuários podem pesquisar por heróis, marcar seus favoritos e visualizar detalhes individuais. O projeto foi estruturado totalmente responsivo, com componentes reutilizáveis, contexto global e loading compartilhado.
 
-Currently, two official plugins are available:
+![image](https://github.com/user-attachments/assets/0eb84912-ae26-4059-a125-1d9a7c590352)
+![image](https://github.com/user-attachments/assets/1ed8660c-b070-4815-b7b2-777a346d72a8)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Deploy
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Acesse o projeto online:  
+👉 [Deploy do projeto](https://desafio-marvel-eight.vercel.app/)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Tecnologias Utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/)
+- [Axios](https://axios-http.com/)
+- [Crypto-js](https://www.npmjs.com/package/crypto-js)
+- [Vite](https://vitejs.dev/)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [ESLint](https://eslint.org/)
+- [Vercel](https://vercel.com/)
+
+---
+
+## Funcionalidades
+
+- **Busca por heróis** por nome (com debounce para evitar chamadas excessivas)
+- **Favoritar heróis** (limitado a 5, com save das infos no `localStorage`)
+- **Exibição de quadrinhos e séries** mais recentes
+- **Página detalhada do herói**, com imagem, descrição, últimos lançamentos e barra de busca
+- **Componente de loading global** com `Context API`
+- **Responsividade** em todas as páginas
+
+---
+
+
+## Pré-requisitos
+- Node.js (versão 16 ou superior)
+- npm ou yarn
+- Git
+
+---
+
+## Como usar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/GuilhermeJSales/desafio-marvel.git
+cd desafio-marvel
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Instale as dependências:
+```bash
+npm install
 ```
+
+3. Configure as variaveis ambiente no arquivo .env.local:
+```bash
+VITE_API_PUBLIC_KEY=suachavepublica
+VITE_API_PRIVATE_KEY=suachaveprivada
+```
+*É importante reforçar que as variaveis ambiente salvas em **.env.local** não são commitadas para o github devido o gitignore. Para que o seu deploy na plataforma funcione é necessário configura-las na sua conta da vercel, direto nas configurações do projeto.*
+
+
+4. Rode o projeto localmente:
+```bash
+npm run dev
+```
+---
+
+### A autenticação da API da Marvel requer a geração de um timestamp, apikey e hash com MD5 no seguinte formato:
+ts=**timestamp**&apikey=**public_key**&hash=**md5(ts+private_key+public_key)**
+
+- **Você pode criar sua conta e gerar suas chaves publicas e privadas no site:** https://developer.marvel.com/
+
+---
+
+## Observações
+- O projeto utiliza apenas a **API oficial da Marvel**.
+- O campo de busca exige o nome completo do herói.
+- Futuras melhorias incluem: paginação, autocomplete de busca e acessibilidade.
+
+
+---
+
+
+## 🙋‍♂️ Autor
+- Projeto desenvolvido para processo seletivo da empresa **Yoodash**
+- Feito com 💙 por [Guilherme Jesus Sales](https://www.linkedin.com/in/guilherme-jesus-sales/)
+- [Portfolio](https://portfolio.guijsweb.com.br/)
+
+
+
+
+
