@@ -11,6 +11,7 @@ Aplicação desenvolvida com React que consome a API da Marvel para exibir heró
 
 Acesse o projeto online:  
 👉 [Deploy do projeto](https://desafio-marvel-eight.vercel.app/)
+👉 [DEVLOG](https://github.com/GuilhermeJSales/desafio-marvel/blob/master/DEVLOG.md)
 
 ---
 
