@@ -88,6 +88,11 @@ ts=**timestamp**&apikey=**public_key**&hash=**md5(ts+private_key+public_key)**
 - O campo de busca exige o nome completo do herói.
 - Futuras melhorias incluem: paginação, autocomplete de busca e acessibilidade.
 
+---
+
+*"Como você lidaria com o limite de 5 favoritos se estivesse usando Redux ou Zustand?"*
+**R: Atualmente, ainda não trabalhei com Zustand e tenho pouca experiência prática com Redux (fiz um curso cerca de 3 anos atrás), por isso não me sinto confortável em responder essa questão de forma técnica no momento.
+No entanto, tenho facilidade para aprender novas ferramentas e estou disposto a estudar e aplicar essas soluções caso sejam necessárias em projetos futuros.**
 
 ---
 
