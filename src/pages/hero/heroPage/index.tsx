@@ -5,6 +5,7 @@ import { Loader } from '../../../components/loader'
 import styles from './heroPage.module.css'
 import { Heart } from '../../../components/heart'
 import { ComicsFilms } from './comicsFilms'
+import { OnSaleDate } from './onSaleDate'
 
 interface HeroProps {
   comics: {
@@ -18,6 +19,9 @@ interface HeroProps {
     extension: string
     path: string
   }
+  series: {
+    available: number
+  }
 }
 
 interface ComicProps {
@@ -27,6 +31,10 @@ interface ComicProps {
     extension: string
     path: string
   }
+  dates: {
+    type: string
+    date: string
+  }[]
 }
 
 export function HeroPage() {
@@ -34,8 +42,6 @@ export function HeroPage() {
   const [loading, setLoading] = useState(false)
   const [heroInfo, setHeroInfo] = useState<HeroProps | null>(null)
   const [comics, setComics] = useState<ComicProps[]>([])
-
-  console.log(heroInfo)
 
   useEffect(() => {
     async function getHeroAndComics() {
@@ -80,7 +86,11 @@ export function HeroPage() {
             {heroInfo.description || 'Sem descrição disponível.'}
           </p>
 
-          <ComicsFilms available={heroInfo.comics.available} />
+          <ComicsFilms
+            availableComics={heroInfo.comics.available}
+            availableSeries={heroInfo.series.available}
+          />
+          {comics.length > 0 && <OnSaleDate comics={comics} />}
         </div>
 
         <img

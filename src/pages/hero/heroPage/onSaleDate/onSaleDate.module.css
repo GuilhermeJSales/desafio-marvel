@@ -1,0 +1,16 @@
+.dateContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dateTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.infosText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #404040;
+}

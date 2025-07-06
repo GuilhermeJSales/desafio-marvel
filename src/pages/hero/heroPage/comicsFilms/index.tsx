@@ -11,10 +11,14 @@ import starFilled from '../../../../assets/review/star.png'
 import starEmpty from '../../../../assets/review/nostar.png'
 
 interface ComicsFilmsProps {
-  available: number
+  availableComics: number
+  availableSeries: number
 }
 
-export function ComicsFilms({ available }: ComicsFilmsProps) {
+export function ComicsFilms({
+  availableComics,
+  availableSeries,
+}: ComicsFilmsProps) {
   function getRatingFromComics(comicCount: number): number {
     if (comicCount > 1000) return 5
     if (comicCount > 500) return 4
@@ -23,7 +27,7 @@ export function ComicsFilms({ available }: ComicsFilmsProps) {
     return 1
   }
 
-  const rating = getRatingFromComics(available)
+  const rating = getRatingFromComics(availableComics)
   const stars = Array.from({ length: 5 }, (_, i) =>
     i < rating ? starFilled : starEmpty,
   )
@@ -40,7 +44,7 @@ export function ComicsFilms({ available }: ComicsFilmsProps) {
               alt="Icone - Quadrinhos"
               style={{ width: '35px', height: '35px' }}
             />
-            <p className={styles.infosText}>{available}</p>
+            <p className={styles.infosText}>{availableComics}</p>
           </div>
         </div>
 
@@ -53,7 +57,7 @@ export function ComicsFilms({ available }: ComicsFilmsProps) {
               alt="Icone - Filmes"
               style={{ width: '35px', height: '35px' }}
             />
-            <p className={styles.infosText}>{available}</p>
+            <p className={styles.infosText}>{availableSeries}</p>
           </div>
         </div>
       </div>
