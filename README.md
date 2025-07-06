@@ -59,6 +59,7 @@ cd desafio-marvel
 2. Instale as dependências:
 ```bash
 npm install
+code .
 ```
 
 3. Configure as variaveis ambiente no arquivo .env.local:
