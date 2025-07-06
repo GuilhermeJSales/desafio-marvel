@@ -33,8 +33,17 @@
   mix-blend-mode: multiply;
 }
 
-@media only screen and (max-width: 400px) {
-  .header h1 {
-    font-size: 1.5rem;
+@media only screen and (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .header div {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
   }
 }
