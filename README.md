@@ -68,7 +68,6 @@ code .
 VITE_API_PUBLIC_KEY=suachavepublica
 VITE_API_PRIVATE_KEY=suachaveprivada
 ```
-*É importante reforçar que as variaveis ambiente salvas em **.env.local** não são commitadas para o github devido o gitignore. Para que o seu deploy na plataforma funcione é necessário configura-las na sua conta da vercel, direto nas configurações do projeto.*
 
 
 4. Rode o projeto localmente:
@@ -91,15 +90,9 @@ ts=**timestamp**&apikey=**public_key**&hash=**md5(ts+private_key+public_key)**
 
 ---
 
-*"Como você lidaria com o limite de 5 favoritos se estivesse usando Redux ou Zustand?"*
-**R: Atualmente, ainda não trabalhei com Zustand e tenho pouca experiência prática com Redux (fiz um curso cerca de 3 anos atrás), por isso não me sinto confortável em responder essa questão de forma técnica no momento.
-No entanto, tenho facilidade para aprender novas ferramentas e estou disposto a estudar e aplicar essas soluções caso sejam necessárias em projetos futuros.**
-
----
-
 
 ## 🙋‍♂️ Autor
-- Projeto desenvolvido para processo seletivo da empresa **Yoodash**
+- Projeto desenvolvido para processo seletivo.
 - Feito com 💙 por [Guilherme Jesus Sales](https://www.linkedin.com/in/guilherme-jesus-sales/)
 - [Portfolio](https://portfolio.guijsweb.com.br/)
 
